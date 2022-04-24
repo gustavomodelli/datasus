@@ -1,0 +1,35 @@
+library(microdatasus)
+library(tidyverse)
+
+dados <- fetch_datasus(year_start = 2014, year_end = 2014, uf = "SP", information_system = "SIM-DO")
+dados <- process_sim(dados)
+
+shu <- dados %>% filter(CAUSABAS == 'D593' | LINHAA == '*D593' | LINHAB == '*D593'
+                        | LINHAC == '*D593' | LINHAD == '*D593')
+
+shu <- shu %>% 
+  mutate(across(c(DTOBITO, DTNASC) , ~ as.Date(. , format = '%Y-%m-%d'))) %>% 
+  mutate(idade = as.numeric((DTOBITO - DTNASC)/365) ) %>% 
+  mutate(across(c(munResLat, munResLon), ~ as.numeric(.)))
+
+shu %>% 
+  count(munResNome)
+
+shu %>% 
+  mutate(ano = lubridate::year(DTOBITO)) %>% 
+  group_by(ano) %>% 
+  count()
+
+ggplot(shu, aes(munResLon, munResLat))+
+  geom_point()+
+  borders(region = 'Brazil')+
+  theme_void()
+
+##dados aih
+dados <- fetch_datasus(year_start = 2014, year_end = 2014, uf = "SP", information_system = "SIH-RD", month_start = 1, month_end = 2)
+dados <- process_sim(dados)
+
+rej <- dados %>% 
+       filter(DIAG_PRINC == 'T861')
+
+
