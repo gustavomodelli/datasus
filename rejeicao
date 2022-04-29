@@ -1,0 +1,35 @@
+library(microdatasus)
+library(tidyverse)
+
+
+dados_brutos_2020 <- fetch_datasus(year_start = 2020, year_end = 2020, 
+                              information_system = 'SIH-RD', month_start = 2, month_end = 3)
+
+
+
+## seleciona CID T86
+
+cid_rejeicao <- c('T861','T862','T863','T864','T868','T869')
+cid_tx <- c('Z940','Z941','Z942','Z943','Z945')
+
+
+rejeicao <- dados_brutos_2020 %>% 
+  filter(DIAG_PRINC %in% cid_rejeicao)
+
+rejeicao <- process_sih(data = rejeicao)
+
+transplante <- dados_brutos_2020 %>% 
+  filter(DIAG_PRINC %in% cid_tx)
+
+transplante <- process_sih(data = transplante)
+
+## Analise
+rejeicao %>% 
+  mutate(across(c(VAL_TOT, QT_DIARIAS), as.numeric)) %>% 
+  group_by(DIAG_PRINC) %>%
+  summarise(toal_aih = sum(VAL_TOT), diarias = mean(QT_DIARIAS))
+
+transplante %>% 
+  group_by(DIAG_PRINC, munResUf) %>% 
+  count() %>% 
+  arrange(desc(n))
