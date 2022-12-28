@@ -12,3 +12,5 @@ https://esaj.tjsp.jus.br/cjsg/resultadoCompleta.do
 # compras governamentais
 
 https://compras.dados.gov.br/docs/home.html
+
+https://compras.dados.gov.br/docs/materiais/v1/materiais.html
