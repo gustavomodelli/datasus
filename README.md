@@ -14,3 +14,7 @@ https://esaj.tjsp.jus.br/cjsg/resultadoCompleta.do
 https://compras.dados.gov.br/docs/home.html
 
 https://compras.dados.gov.br/docs/materiais/v1/materiais.html
+
+# Open Sci
+
+https://ropensci.org/
