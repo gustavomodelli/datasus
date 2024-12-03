@@ -6,6 +6,10 @@ https://github.com/turicas/socios-brasil
 https://datasus.saude.gov.br/
 https://datasus.saude.gov.br/transferencia-de-arquivos/
 
+# saude suplementar
+
+https://dados.gov.br/dados/organizacoes/visualizar/agencia-nacional-de-saude-suplementar
+
 # jurimetria
 
 https://abjur.github.io/ser2018/cuidado.html
