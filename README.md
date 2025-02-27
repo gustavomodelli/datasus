@@ -6,6 +6,8 @@ https://github.com/turicas/socios-brasil
 https://datasus.saude.gov.br/
 https://datasus.saude.gov.br/transferencia-de-arquivos/
 
+https://bookdown.org/labxss/coorte_adm2/
+
 # saude suplementar
 
 https://dados.gov.br/dados/organizacoes/visualizar/agencia-nacional-de-saude-suplementar
